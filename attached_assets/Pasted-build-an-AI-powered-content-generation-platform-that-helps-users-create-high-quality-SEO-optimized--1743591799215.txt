@@ -1,0 +1,60 @@
+build an AI-powered content generation platform that helps users create high-quality, SEO-optimized content for websites, blogs, and social media. The platform should generate content based on user inputs, such as content type, target audience, tone/style, and SEO keywords."
+
+Core Features to Include:
+
+Content Types: Users can choose from different content types like blog posts, social media captions, product descriptions, email templates, and more.
+
+Customization Options: Users should be able to specify:
+
+Tone & Style: Options like formal, casual, humorous, motivational, etc.
+
+Word Count: Ability to choose short (150-200 words) or long (500-1000 words) content.
+
+SEO Optimization: Ability to add 3-5 keywords for SEO and generate SEO-friendly content.
+
+Platform/Use Case: Allow content creation for specific platforms (e.g., Instagram, LinkedIn, website blogs, etc.).
+
+Call to Action (CTA): Users should be able to add a CTA (e.g., "Learn more", "Buy now", etc.).
+
+Additional Functionalities:
+
+Hashtags & Meta Description: For social media, generate relevant hashtags; for blogs, generate meta descriptions.
+
+Plagiarism Checker: Integrate a plagiarism checker to ensure unique content.
+
+Content Suggestions: Based on the input, provide content ideas, headlines, or inspiration.
+
+Monetization Features:
+
+Subscription Plans: Create different pricing tiers (e.g., free for limited use, premium for unlimited access, enterprise plans for large-scale usage).
+
+Credits for Usage: Users can buy credits for generating additional content beyond their plan limits.
+
+User Interface (UI):
+
+Simple Dashboard: Create an intuitive user dashboard where users can input their content requests and receive the output.
+
+Preview & Edit: Allow users to preview and edit the generated content before finalizing.
+
+Integrations:
+
+Social Media Integration: Allow users to directly share content to platforms like Instagram, LinkedIn, Twitter, etc.
+
+API Access (Optional): Allow businesses or agencies to integrate the content generator into their systems via API.
+
+Example Response to AI Tool:
+“I want to create an AI-powered content generator SaaS that helps businesses and content creators automatically generate SEO-optimized blog posts, social media captions, and product descriptions. The platform should allow users to:
+
+Choose from content types (blog, social media, product descriptions).
+
+Customize tone (casual, formal, professional, humorous).
+
+Add SEO keywords for optimization.
+
+Set the word count (e.g., 150-500 words).
+
+Get automatic suggestions for headlines, content, and CTAs.
+
+Integrate with social media for direct publishing.
+
+Support multiple languages for international audiences.”
