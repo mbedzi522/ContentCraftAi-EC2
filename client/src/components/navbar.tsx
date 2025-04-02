@@ -19,6 +19,8 @@ const Navbar: React.FC = () => {
         <Link href="/features" className="text-gray-300 hover:text-white transition-colors">Features</Link>
         <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
         <Link href="/examples" className="text-gray-300 hover:text-white transition-colors">Examples</Link>
+        <Link href="/trading-post" className="text-gray-300 hover:text-white transition-colors">Trading Post</Link>
+        <Link href="/tiktok-case-study" className="text-gray-300 hover:text-white transition-colors">TikTok Study</Link>
       </div>
       
       <div className="flex items-center gap-3">
@@ -52,6 +54,8 @@ const Navbar: React.FC = () => {
           <Link href="/features" className="text-gray-300 hover:text-white transition-colors py-2">Features</Link>
           <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors py-2">Pricing</Link>
           <Link href="/examples" className="text-gray-300 hover:text-white transition-colors py-2">Examples</Link>
+          <Link href="/trading-post" className="text-gray-300 hover:text-white transition-colors py-2">Trading Post</Link>
+          <Link href="/tiktok-case-study" className="text-gray-300 hover:text-white transition-colors py-2">TikTok Study</Link>
           <button className="glass px-5 py-2 rounded-lg text-white text-sm hover:bg-white/10 transition-all duration-300">
             Sign In
           </button>

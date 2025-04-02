@@ -7,6 +7,8 @@ import Home from "@/pages/home";
 import Examples from "@/pages/examples";
 import Features from "@/pages/features";
 import Pricing from "@/pages/pricing";
+import TradingPost from "@/pages/trading-post";
+import TikTokCaseStudy from "@/pages/tiktok-case-study";
 
 function Router() {
   return (
@@ -15,6 +17,8 @@ function Router() {
       <Route path="/examples" component={Examples}/>
       <Route path="/features" component={Features}/>
       <Route path="/pricing" component={Pricing}/>
+      <Route path="/trading-post" component={TradingPost}/>
+      <Route path="/tiktok-case-study" component={TikTokCaseStudy}/>
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

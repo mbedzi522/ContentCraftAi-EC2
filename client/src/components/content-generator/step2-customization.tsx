@@ -22,7 +22,7 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
   onGenerate,
   isGenerating
 }) => {
-  const handleToggleWordCount = (wordCount: "short" | "long") => {
+  const handleToggleWordCount = (wordCount: "short" | "medium" | "long") => {
     onChange("wordCount", wordCount);
   };
 
@@ -49,6 +49,9 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
                   <SelectItem value="humorous">Humorous & Friendly</SelectItem>
                   <SelectItem value="motivational">Motivational & Inspiring</SelectItem>
                   <SelectItem value="technical">Technical & Detailed</SelectItem>
+                  <SelectItem value="analytical">Analytical & Data-Driven</SelectItem>
+                  <SelectItem value="authoritative">Authoritative & Expert</SelectItem>
+                  <SelectItem value="viral">Viral & Attention-Grabbing</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -56,18 +59,24 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
             {/* Word Count */}
             <div>
               <Label className="block text-gray-200 mb-2 text-sm">Word Count</Label>
-              <div className="glass p-1 rounded-lg grid grid-cols-2 gap-1">
+              <div className="glass p-1 rounded-lg grid grid-cols-3 gap-1">
                 <button 
                   className={`${formState.wordCount === 'short' ? 'bg-primary' : 'bg-transparent'} text-white p-2 rounded-md text-sm transition-colors`}
                   onClick={() => handleToggleWordCount("short")}
                 >
-                  Short (150-200 words)
+                  Short (150-300)
+                </button>
+                <button 
+                  className={`${formState.wordCount === 'medium' ? 'bg-primary' : 'bg-transparent'} text-white p-2 rounded-md text-sm transition-colors`}
+                  onClick={() => handleToggleWordCount("medium")}
+                >
+                  Medium (400-700)
                 </button>
                 <button 
                   className={`${formState.wordCount === 'long' ? 'bg-primary' : 'bg-transparent'} text-white p-2 rounded-md text-sm transition-colors`}
                   onClick={() => handleToggleWordCount("long")}
                 >
-                  Long (500-1000 words)
+                  Long (800-1500)
                 </button>
               </div>
             </div>
@@ -84,11 +93,16 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
                 </SelectTrigger>
                 <SelectContent className="glass-dark">
                   <SelectItem value="website">Website/Landing Page</SelectItem>
+                  <SelectItem value="blog">Blog Platform</SelectItem>
                   <SelectItem value="instagram">Instagram</SelectItem>
                   <SelectItem value="facebook">Facebook</SelectItem>
                   <SelectItem value="linkedin">LinkedIn</SelectItem>
                   <SelectItem value="twitter">Twitter</SelectItem>
+                  <SelectItem value="tiktok">TikTok</SelectItem>
                   <SelectItem value="email">Email Campaign</SelectItem>
+                  <SelectItem value="ecommerce">E-commerce Product Page</SelectItem>
+                  <SelectItem value="trading">Trading Platform</SelectItem>
+                  <SelectItem value="investment">Investment Newsletter</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -125,8 +139,8 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Checkbox 
                     id="generateHashtags" 
-                    checked={formState.generateHashtags}
-                    onCheckedChange={(checked) => onChange("generateHashtags", checked)}
+                    checked={formState.generateHashtags === true}
+                    onCheckedChange={(checked) => onChange("generateHashtags", checked === true)}
                   />
                   <label
                     htmlFor="generateHashtags"
@@ -138,8 +152,8 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Checkbox 
                     id="includeMetaDescription" 
-                    checked={formState.includeMetaDescription}
-                    onCheckedChange={(checked) => onChange("includeMetaDescription", checked)}
+                    checked={formState.includeMetaDescription === true}
+                    onCheckedChange={(checked) => onChange("includeMetaDescription", checked === true)}
                   />
                   <label
                     htmlFor="includeMetaDescription"
@@ -151,8 +165,8 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Checkbox 
                     id="checkPlagiarism" 
-                    checked={formState.checkPlagiarism}
-                    onCheckedChange={(checked) => onChange("checkPlagiarism", checked)}
+                    checked={formState.checkPlagiarism === true}
+                    onCheckedChange={(checked) => onChange("checkPlagiarism", checked === true)}
                   />
                   <label
                     htmlFor="checkPlagiarism"
@@ -161,8 +175,130 @@ const Step2Customization: React.FC<Step2CustomizationProps> = ({
                     Check for plagiarism
                   </label>
                 </div>
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <Checkbox 
+                    id="trendingAnalysis" 
+                    checked={formState.trendingAnalysis === true}
+                    onCheckedChange={(checked) => onChange("trendingAnalysis", checked === true)}
+                  />
+                  <label
+                    htmlFor="trendingAnalysis"
+                    className="text-sm text-gray-200 cursor-pointer"
+                  >
+                    Include trending analysis
+                  </label>
+                </div>
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <Checkbox 
+                    id="seoOptimization" 
+                    checked={formState.seoOptimization === true}
+                    onCheckedChange={(checked) => onChange("seoOptimization", checked === true)}
+                  />
+                  <label
+                    htmlFor="seoOptimization"
+                    className="text-sm text-gray-200 cursor-pointer"
+                  >
+                    Enhanced SEO optimization
+                  </label>
+                </div>
               </div>
             </div>
+            
+            {/* Trading Analysis Options - Only shown for trading content type */}
+            {formState.contentType === 'trading' && (
+              <div>
+                <Label className="block text-gray-200 mb-2 text-sm">Trading Analysis Options</Label>
+                <div className="flex flex-wrap gap-3">
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox 
+                      id="marketTrends" 
+                      checked={formState.marketTrends === true}
+                      onCheckedChange={(checked) => onChange("marketTrends", checked === true)}
+                    />
+                    <label
+                      htmlFor="marketTrends"
+                      className="text-sm text-gray-200 cursor-pointer"
+                    >
+                      Include market trends
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox 
+                      id="riskAnalysis" 
+                      checked={formState.riskAnalysis === true}
+                      onCheckedChange={(checked) => onChange("riskAnalysis", checked === true)}
+                    />
+                    <label
+                      htmlFor="riskAnalysis"
+                      className="text-sm text-gray-200 cursor-pointer"
+                    >
+                      Include risk analysis
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox 
+                      id="timeframeRecommendation" 
+                      checked={formState.timeframeRecommendation === true}
+                      onCheckedChange={(checked) => onChange("timeframeRecommendation", checked === true)}
+                    />
+                    <label
+                      htmlFor="timeframeRecommendation"
+                      className="text-sm text-gray-200 cursor-pointer"
+                    >
+                      Trading timeframe recommendations
+                    </label>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {/* TikTok Content Options - Only shown for TikTok content type */}
+            {formState.contentType === 'tiktok' && (
+              <div>
+                <Label className="block text-gray-200 mb-2 text-sm">TikTok Content Options</Label>
+                <div className="flex flex-wrap gap-3">
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox 
+                      id="viralPotential" 
+                      checked={formState.viralPotential === true}
+                      onCheckedChange={(checked) => onChange("viralPotential", checked === true)}
+                    />
+                    <label
+                      htmlFor="viralPotential"
+                      className="text-sm text-gray-200 cursor-pointer"
+                    >
+                      Analyze viral potential
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox 
+                      id="demographicAnalysis" 
+                      checked={formState.demographicAnalysis === true}
+                      onCheckedChange={(checked) => onChange("demographicAnalysis", checked === true)}
+                    />
+                    <label
+                      htmlFor="demographicAnalysis"
+                      className="text-sm text-gray-200 cursor-pointer"
+                    >
+                      Include demographic analysis
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox 
+                      id="trendingTags" 
+                      checked={formState.trendingTags === true}
+                      onCheckedChange={(checked) => onChange("trendingTags", checked === true)}
+                    />
+                    <label
+                      htmlFor="trendingTags"
+                      className="text-sm text-gray-200 cursor-pointer"
+                    >
+                      Generate trending hashtags
+                    </label>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

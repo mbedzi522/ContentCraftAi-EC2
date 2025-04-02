@@ -17,9 +17,27 @@ const initialFormState: FormState = {
   platform: "website",
   keywords: "",
   callToAction: "",
+  // Standard options
   generateHashtags: false,
   includeMetaDescription: false,
-  checkPlagiarism: false
+  includeMetaKeywords: false,
+  includeSeoTitle: false,
+  checkPlagiarism: false,
+  targetAudience: "",
+  // Enhanced SEO options
+  seoOptimization: false,
+  trendingAnalysis: false,
+  // Trading content specific
+  marketTrends: false,
+  riskAnalysis: false,
+  timeframeRecommendation: false,
+  includeTradingInsights: false,
+  // TikTok & Viral content specific
+  viralPotential: false,
+  demographicAnalysis: false,
+  trendingTags: false,
+  generateTrendingTags: false,
+  includeViralAnalysis: false
 };
 
 const ContentGenerator: React.FC = () => {
@@ -73,7 +91,7 @@ const ContentGenerator: React.FC = () => {
     });
   };
 
-  const handleContentTypeSelect = (contentType: "blog" | "social" | "product" | "email") => {
+  const handleContentTypeSelect = (contentType: "blog" | "social" | "product" | "email" | "trading" | "tiktok") => {
     setFormState({
       ...formState,
       contentType
@@ -182,8 +200,8 @@ const ContentGenerator: React.FC = () => {
           className="glass rounded-2xl p-10 flex flex-col items-center justify-center text-center"
         >
           <div className="w-16 h-16 rounded-full border-t-2 border-primary border-r-2 border-secondary animate-spin mb-6"></div>
-          <h3 className="text-xl font-medium mb-2">Generating Content with Gemini 1.0 Pro</h3>
-          <p className="text-gray-300 max-w-md">Google's Gemini 1.0 Pro is crafting high-quality, SEO-optimized content based on your inputs. This usually takes 10-15 seconds.</p>
+          <h3 className="text-xl font-medium mb-2">Generating Content with Gemini 1.5 Pro</h3>
+          <p className="text-gray-300 max-w-md">Google's Gemini 1.5 Pro is crafting high-quality, SEO-optimized content with enhanced trading and viral analysis capabilities. This usually takes 10-15 seconds.</p>
         </motion.div>
       )}
     </div>

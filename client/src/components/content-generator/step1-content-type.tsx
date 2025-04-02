@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-type ContentType = "blog" | "social" | "product" | "email";
+type ContentType = "blog" | "social" | "product" | "email" | "trading" | "tiktok";
 
 interface ContentTypeCardProps {
   type: ContentType;
@@ -29,7 +29,7 @@ const ContentTypeCard: React.FC<ContentTypeCardProps> = ({
       onClick={onSelect}
     >
       <div className={`w-12 h-12 rounded-lg ${iconBgClass} flex items-center justify-center mb-3`}>
-        <i className={`bx ${icon} text-2xl ${type === "blog" || type === "product" ? 'text-primary' : 'text-secondary'}`}></i>
+        <i className={`bx ${icon} text-2xl ${["blog", "product", "trading"].includes(type) ? 'text-primary' : 'text-secondary'}`}></i>
       </div>
       <h4 className="font-medium text-white mb-1">{title}</h4>
       <p className="text-sm text-gray-300">{description}</p>
@@ -72,6 +72,20 @@ const Step1ContentType: React.FC<Step1ContentTypeProps> = ({ selectedType, onSel
       description: "Professional emails that drive action",
       icon: "bx-envelope",
       iconBgClass: "bg-secondary/20"
+    },
+    {
+      type: "trading" as ContentType,
+      title: "Trading Analysis",
+      description: "Professional market insights and trading recommendations",
+      icon: "bx-line-chart",
+      iconBgClass: "bg-primary/20"
+    },
+    {
+      type: "tiktok" as ContentType,
+      title: "TikTok Content",
+      description: "Viral-optimized content for TikTok success",
+      icon: "bx-video",
+      iconBgClass: "bg-secondary/20"
     }
   ];
 
@@ -80,7 +94,7 @@ const Step1ContentType: React.FC<Step1ContentTypeProps> = ({ selectedType, onSel
       <div className="px-6 py-8">
         <h3 className="text-lg font-medium mb-6">What type of content do you want to create?</h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {contentTypeOptions.map(option => (
             <ContentTypeCard
               key={option.type}
