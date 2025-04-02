@@ -182,8 +182,8 @@ const ContentGenerator: React.FC = () => {
           className="glass rounded-2xl p-10 flex flex-col items-center justify-center text-center"
         >
           <div className="w-16 h-16 rounded-full border-t-2 border-primary border-r-2 border-secondary animate-spin mb-6"></div>
-          <h3 className="text-xl font-medium mb-2">Generating Content with Gemini</h3>
-          <p className="text-gray-300 max-w-md">Google's Gemini AI is crafting high-quality, SEO-optimized content based on your inputs. This usually takes 10-15 seconds.</p>
+          <h3 className="text-xl font-medium mb-2">Generating Content with Gemini 1.0 Pro</h3>
+          <p className="text-gray-300 max-w-md">Google's Gemini 1.0 Pro is crafting high-quality, SEO-optimized content based on your inputs. This usually takes 10-15 seconds.</p>
         </motion.div>
       )}
     </div>

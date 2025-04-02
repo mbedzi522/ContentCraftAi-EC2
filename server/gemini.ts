@@ -38,9 +38,9 @@ const safetySettings = [
  */
 export async function generateContent(request: ContentGenerationRequest): Promise<GeneratedContent> {
   try {
-    // Get the Gemini Pro model
+    // Get the Gemini model (using the 1.0Pro model as it's more widely available)
     const model = genAI.getGenerativeModel({
-      model: "gemini-pro",
+      model: "gemini-1.0-pro",
       generationConfig,
       safetySettings,
     });
