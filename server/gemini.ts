@@ -1,8 +1,10 @@
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { ContentGenerationRequest, GeneratedContent } from "@shared/schema";
 
-// Initialize the Google Generative AI client
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+// Initialize the Google Generative AI client with v1 API
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string, {
+  apiVersion: "v1"
+});
 
 // Gemini model configuration for content generation
 const generationConfig = {
@@ -38,9 +40,9 @@ const safetySettings = [
  */
 export async function generateContent(request: ContentGenerationRequest): Promise<GeneratedContent> {
   try {
-    // Get the Gemini model (using the 1.0Pro model as it's more widely available)
+    // Get the Gemini model (using the model specified by the user)
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.0-pro",
+      model: "gemini-1.5-pro",
       generationConfig,
       safetySettings,
     });
