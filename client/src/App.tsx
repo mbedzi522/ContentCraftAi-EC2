@@ -4,11 +4,17 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
+import Examples from "@/pages/examples";
+import Features from "@/pages/features";
+import Pricing from "@/pages/pricing";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home}/>
+      <Route path="/examples" component={Examples}/>
+      <Route path="/features" component={Features}/>
+      <Route path="/pricing" component={Pricing}/>
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 const CtaSection: React.FC = () => {
   return (
@@ -35,21 +36,25 @@ const CtaSection: React.FC = () => {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row justify-center gap-4"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-primary to-secondary px-8 py-3 rounded-lg text-white font-medium hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300 btn-glow"
-            >
-              Try for Free - No Credit Card
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="glass px-8 py-3 rounded-lg text-white font-medium hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <i className='bx bx-play-circle'></i>
-              Watch Demo
-            </motion.button>
+            <Link href="/pricing">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-primary to-secondary px-8 py-3 rounded-lg text-white font-medium hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300 btn-glow"
+              >
+                Try for Free - No Credit Card
+              </motion.button>
+            </Link>
+            <Link href="/examples">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="glass px-8 py-3 rounded-lg text-white font-medium hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <i className='bx bx-play-circle'></i>
+                View Examples
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>

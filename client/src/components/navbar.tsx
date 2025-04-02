@@ -16,9 +16,9 @@ const Navbar: React.FC = () => {
       
       <div className="hidden md:flex items-center gap-6">
         <Link href="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
-        <Link href="#features" className="text-gray-300 hover:text-white transition-colors">Features</Link>
-        <Link href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
-        <Link href="#examples" className="text-gray-300 hover:text-white transition-colors">Examples</Link>
+        <Link href="/features" className="text-gray-300 hover:text-white transition-colors">Features</Link>
+        <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
+        <Link href="/examples" className="text-gray-300 hover:text-white transition-colors">Examples</Link>
       </div>
       
       <div className="flex items-center gap-3">
@@ -49,9 +49,9 @@ const Navbar: React.FC = () => {
           className="absolute top-full left-0 right-0 glass-dark p-4 flex flex-col gap-4 md:hidden"
         >
           <Link href="/" className="text-gray-300 hover:text-white transition-colors py-2">Home</Link>
-          <Link href="#features" className="text-gray-300 hover:text-white transition-colors py-2">Features</Link>
-          <Link href="#pricing" className="text-gray-300 hover:text-white transition-colors py-2">Pricing</Link>
-          <Link href="#examples" className="text-gray-300 hover:text-white transition-colors py-2">Examples</Link>
+          <Link href="/features" className="text-gray-300 hover:text-white transition-colors py-2">Features</Link>
+          <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors py-2">Pricing</Link>
+          <Link href="/examples" className="text-gray-300 hover:text-white transition-colors py-2">Examples</Link>
           <button className="glass px-5 py-2 rounded-lg text-white text-sm hover:bg-white/10 transition-all duration-300">
             Sign In
           </button>

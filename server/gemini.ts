@@ -1,10 +1,8 @@
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { ContentGenerationRequest, GeneratedContent } from "@shared/schema";
 
-// Initialize the Google Generative AI client with v1 API
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string, {
-  apiVersion: "v1"
-});
+// Initialize the Google Generative AI client
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
 // Gemini model configuration for content generation
 const generationConfig = {
