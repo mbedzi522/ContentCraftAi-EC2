@@ -3,8 +3,12 @@ import {
   type InsertUser, 
   type ContentGeneration,
   type ContentGenerationRequest,
-  type GeneratedContent 
+  type GeneratedContent,
+  users,
+  contentGenerations
 } from "@shared/schema";
+import { db } from "./db";
+import { eq, desc } from "drizzle-orm";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -20,42 +24,24 @@ export interface IStorage {
   getRecentContentGenerations(limit: number): Promise<ContentGeneration[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private contentGenerations: Map<number, ContentGeneration>;
-  userCurrentId: number;
-  generationCurrentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.contentGenerations = new Map();
-    this.userCurrentId = 1;
-    this.generationCurrentId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const result = await db.select().from(users).where(eq(users.id, id));
+    return result.length > 0 ? result[0] : undefined;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const result = await db.select().from(users).where(eq(users.username, username));
+    return result.length > 0 ? result[0] : undefined;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.userCurrentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const result = await db.insert(users).values(insertUser).returning();
+    return result[0];
   }
 
   async saveContentGeneration(generation: ContentGenerationRequest & { generatedContent: GeneratedContent }): Promise<ContentGeneration> {
-    const id = this.generationCurrentId++;
-    const timestamp = new Date();
-    
-    const contentGeneration: ContentGeneration = {
-      id,
+    const result = await db.insert(contentGenerations).values({
       contentType: generation.contentType,
       toneStyle: generation.toneStyle,
       wordCount: generation.wordCount,
@@ -65,25 +51,24 @@ export class MemStorage implements IStorage {
       generateHashtags: generation.generateHashtags,
       includeMetaDescription: generation.includeMetaDescription,
       checkPlagiarism: generation.checkPlagiarism,
-      generatedContent: generation.generatedContent,
-      createdAt: timestamp
-    };
+      generatedContent: generation.generatedContent
+    }).returning();
     
-    this.contentGenerations.set(id, contentGeneration);
-    return contentGeneration;
+    return result[0];
   }
 
   async getContentGeneration(id: number): Promise<ContentGeneration | undefined> {
-    return this.contentGenerations.get(id);
+    const result = await db.select().from(contentGenerations).where(eq(contentGenerations.id, id));
+    return result.length > 0 ? result[0] : undefined;
   }
 
   async getRecentContentGenerations(limit: number): Promise<ContentGeneration[]> {
-    return Array.from(this.contentGenerations.values())
-      .sort((a, b) => {
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-      })
-      .slice(0, limit);
+    return await db.select()
+      .from(contentGenerations)
+      .orderBy(desc(contentGenerations.createdAt))
+      .limit(limit);
   }
 }
 
-export const storage = new MemStorage();
+// Switch from MemStorage to DatabaseStorage for persistent storage
+export const storage = new DatabaseStorage();
